@@ -5,19 +5,20 @@ import javax.validation.constraints.Size;
 
 import mx.uady.sicei.model.Licenciatura;
 
-public class AlumnoRequest {
+public class ProfesorRequest {
 
     @NotEmpty
     @Size(min = 1, max = 255)
     private String nombre;
 
-    private Licenciatura licenciatura;
+    private Integer horas;
 
-    public AlumnoRequest() {
+    public ProfesorRequest() {
     }
 
-    public AlumnoRequest(String nombre) {
+    public ProfesorRequest(String nombre, Integer horas) {
         this.nombre = nombre;
+        this.horas = horas;
     }
 
     public String getNombre() {
@@ -28,21 +29,21 @@ public class AlumnoRequest {
         this.nombre = nombre;
     }
 
-    public AlumnoRequest licenciatura(Licenciatura licenciatura) {
-        this.licenciatura = licenciatura;
+    public Integer getHoras() {
+        return this.horas;
+    }
+
+    public void setHoras(Integer horas) {
+        this.horas = horas;
+    }
+
+    public ProfesorRequest nombre(String nombre) {
+        this.nombre = nombre;
         return this;
     }
 
-    public Licenciatura getLicenciatura() {
-        return this.licenciatura;
-    }
-
-    public void setLicenciatura(Licenciatura licenciatura) {
-        this.licenciatura = licenciatura;
-    }
-
-    public AlumnoRequest nombre(String nombre) {
-        this.nombre = nombre;
+    public ProfesorRequest horas(Integer horas) {
+        this.horas = horas;
         return this;
     }
 
@@ -50,6 +51,7 @@ public class AlumnoRequest {
     public String toString() {
         return "{" +
             " nombre='" + getNombre() + "'" +
+            ", horas='" + getHoras() + "'" +
             "}";
     }
     

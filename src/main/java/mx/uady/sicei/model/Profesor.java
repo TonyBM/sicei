@@ -17,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "alumnos")
-public class Alumno {
+@Table(name = "profesores")
+public class Profesor {
 
     // POJO: Plain Java Object. No existe ninguna accion
     
@@ -30,29 +30,15 @@ public class Alumno {
     private String nombre;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private Licenciatura licenciatura;
+    private Integer horas;
 
-    // JOIN Usuario WHERE alumno.id_usario = usuarios.id
-
-    // LAZY vs EAGER
-
-    @OneToOne
-    @JoinColumn(name = "id_usuario") // alumno.id_usuario
-    private Usuario usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "id_equipo")
-    @JsonBackReference
-    private Equipo equipo;
-
-    public Alumno() {
+    public Profesor() {
     }
 
-    public Alumno(Integer id, String nombre, Licenciatura licenciatura) {
+    public Profesor(Integer id, String nombre, Integer horas) {
         this.id = id;
         this.nombre = nombre;
-        this.licenciatura = licenciatura;
+        this.horas = horas;
     }
 
     public Integer getId() {
@@ -71,45 +57,36 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public Alumno id(Integer id) {
+    public Integer getHoras() {
+        return this.horas;
+    }
+
+    public void setHoras(Integer horas) {
+        this.horas = horas;
+    }
+
+    public Profesor id(Integer id) {
         this.id = id;
         return this;
     }
 
-    public Alumno nombre(String nombre) {
+    public Profesor nombre(String nombre) {
         this.nombre = nombre;
         return this;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public Profesor horas(Integer horas) {
+        this.horas = horas;
+        return this;
     }
 
-    public Licenciatura getLicenciatura() {
-        return licenciatura;
-    }
-
-    public void setLicenciatura(Licenciatura licenciatura) {
-        this.licenciatura = licenciatura;
-    }
-    
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setEquipo(Equipo equipo) {
-        this.equipo = equipo;
-    }
-
-    public Equipo getEquipo() {
-        return equipo;
-    }
 
     @Override
     public String toString() {
         return "{" +
             " id='" + getId() + "'" +
             ", nombre='" + getNombre() + "'" +
+            ", horas='" + getHoras() + "'" +
             "}";
     }
 
