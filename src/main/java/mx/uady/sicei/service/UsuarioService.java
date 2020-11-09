@@ -1,6 +1,5 @@
 package mx.uady.sicei.service;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -47,7 +46,7 @@ public class UsuarioService {
         alumno.setNombre(request.getNombre());
         alumno.setUsuario(usuarioGuardado); // Relacionar 2 entidades
 
-        alumnoRepository.save(alumno);
+        alumno = alumnoRepository.save(alumno);
 
         return usuarioGuardado;
     }
@@ -61,25 +60,6 @@ public class UsuarioService {
         }
 
         throw new NotFoundException();
-    }
-    
-    public Usuario editarUsuario(Integer id, UsuarioRequest request) {
-        return usuarioRepository.findById(id)
-        .map(usuario -> {
-            usuario.setUsuario(request.getUsuario());
-            return usuarioRepository.save(usuario);
-        })
-        .orElseThrow(() -> new NotFoundException("La entidad usuario no pudo ser encontrada."));
-    }
-    
-    public void borrarUsuario(Integer id) {
-        List<Usuario> usuarios = new LinkedList<>();
-        usuarioRepository.findAll().iterator().forEachRemaining(usuarios::add);
-        if(usuarios.size() < id || id <= 0){
-            throw new NotFoundException("La entidad usuario no pudo ser encontrada.");
-        }
-        
-        alumnoRepository.deleteById(id);
     }
 
 }
