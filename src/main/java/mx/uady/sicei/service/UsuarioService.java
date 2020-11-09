@@ -46,7 +46,7 @@ public class UsuarioService {
         alumno.setNombre(request.getNombre());
         alumno.setUsuario(usuarioGuardado); // Relacionar 2 entidades
 
-        alumno = alumnoRepository.save(alumno);
+        alumnoRepository.save(alumno);
 
         return usuarioGuardado;
     }
@@ -57,6 +57,25 @@ public class UsuarioService {
 
         if (opt.isPresent()) {
             return opt.get();
+        }
+
+        throw new NotFoundException();
+    }
+    
+    public Usuario editarUsuario(Integer id, UsuarioRequest request) {
+        return usuarioRepository.findById(id)
+        .map(usuario -> {
+            usuario.setUsuario(request.getUsuario());
+            return usuarioRepository.save(usuario);
+        })
+        .orElseThrow(() -> new NotFoundException("La entidad usuario no pudo ser encontrada."));
+    }
+    
+    public void borrarUsuario(Integer id) {
+        Optional<Usuario> opt = usuarioRepository.findById(id);
+
+        if (opt.isPresent()) {
+            usuarioRepository.deleteById(id);
         }
 
         throw new NotFoundException();
