@@ -1,5 +1,6 @@
 package mx.uady.sicei.service;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -72,13 +73,13 @@ public class UsuarioService {
     }
     
     public void borrarUsuario(Integer id) {
-        Optional<Usuario> opt = usuarioRepository.findById(id);
-
-        if (opt.isPresent()) {
-            usuarioRepository.deleteById(id);
+        List<Usuario> usuarios = new LinkedList<>();
+        usuarioRepository.findAll().iterator().forEachRemaining(usuarios::add);
+        if(usuarios.size() < id || id <= 0){
+            throw new NotFoundException("La entidad usuario no pudo ser encontrada.");
         }
-
-        throw new NotFoundException();
+        
+        alumnoRepository.deleteById(id);
     }
 
 }
