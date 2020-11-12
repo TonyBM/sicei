@@ -90,5 +90,4 @@ public class Usuario {
         return token;
     }
 
-    
 }
