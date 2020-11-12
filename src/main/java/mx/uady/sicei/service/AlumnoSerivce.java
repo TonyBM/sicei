@@ -10,13 +10,17 @@ import mx.uady.sicei.exception.NotFoundException;
 
 import mx.uady.sicei.model.Alumno;
 import mx.uady.sicei.model.request.AlumnoRequest;
+import mx.uady.sicei.model.Tutoria;
 import mx.uady.sicei.repository.AlumnoRepository;
+import mx.uady.sicei.repository.TutoriaRepository;
 
 @Service
 public class AlumnoSerivce {
 
     @Autowired
     private AlumnoRepository alumnoRepository;
+    @Autowired
+    private TutoriaRepository tutoriaRepository;
 
     public List<Alumno> getAlumnos() {
 
@@ -53,15 +57,23 @@ public class AlumnoSerivce {
         .orElseThrow(() -> new NotFoundException("La entidad alumno no pudo ser encontrada."));
     }
 
-    public void borrarAlumno(Integer AlumnoID) {
+    public String borrarAlumno(Integer AlumnoID) {
 
         List<Alumno> alumnos = new LinkedList<>();
         alumnoRepository.findAll().iterator().forEachRemaining(alumnos::add);
         if(alumnos.size() < AlumnoID || AlumnoID <= 0){
             throw new NotFoundException("La entidad alumno no pudo ser encontrada.");
         }
-        
-        alumnoRepository.deleteById(AlumnoID);
+
+        List<Tutoria> tutoriasAlumno = tutoriaRepository.findByIdIdalumno(AlumnoID);
+
+        if(tutoriasAlumno.isEmpty()){
+            alumnoRepository.deleteById(AlumnoID);
+            return "Alumno "+AlumnoID+" Borrado";
+        } else {
+            return "Alumno "+AlumnoID+" No se pudo borrar ya que tiene tutorias asignadas";
+        }
+
     }
     
 }

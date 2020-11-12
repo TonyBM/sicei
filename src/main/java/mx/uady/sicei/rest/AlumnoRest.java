@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -79,11 +81,11 @@ public class AlumnoRest {
     @DeleteMapping("/alumnos/{id}")
     public ResponseEntity deleteAlumno(@PathVariable Integer id){
 
-        alumnoService.borrarAlumno(id);
+        String response = alumnoService.borrarAlumno(id);
 
         return ResponseEntity
             .ok()
-            .body("Alumno Borrado");
+            .body(Collections.singletonMap("Respuesta", response));
     }
 
 

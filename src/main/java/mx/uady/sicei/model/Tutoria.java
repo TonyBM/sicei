@@ -27,11 +27,11 @@ public class Tutoria {
     private Integer horas;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="idalumno",referencedColumnName="id", insertable=false, updatable=false)
+    @JoinColumn(name="id_alumno",referencedColumnName="id", insertable=false, updatable=false)
     Alumno alumno;
 
     @ManyToOne(optional=false)
-    @JoinColumn(name="idprofesor",referencedColumnName="id", insertable=false, updatable=false)
+    @JoinColumn(name="id_profesor",referencedColumnName="id", insertable=false, updatable=false)
     Profesor profesor;
 
     public Tutoria() { }
