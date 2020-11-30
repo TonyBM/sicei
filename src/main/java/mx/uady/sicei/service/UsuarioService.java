@@ -51,6 +51,17 @@ public class UsuarioService {
 
         return usuarioGuardado;
     }
+    
+    public String login(String usuario, String password) {
+        Usuario foundUser = usuarioRepository.findByUsuarioAndPassword(usuario, password);
+        if(foundUser != null) {
+            String token = UUID.randomUUID().toString();
+            foundUser.setToken(token);
+            return token;
+        }
+        else
+            throw new NotFoundException();
+    }
 
     public Usuario getUsuario(Integer id) {
 
