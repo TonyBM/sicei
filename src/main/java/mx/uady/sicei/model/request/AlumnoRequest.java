@@ -10,6 +10,10 @@ public class AlumnoRequest {
     @NotEmpty
     @Size(min = 1, max = 255)
     private String nombre;
+    
+    @NotEmpty
+    @Size(min = 8, max = 255)
+    private String password;
 
     private Licenciatura licenciatura;
 
@@ -26,6 +30,14 @@ public class AlumnoRequest {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public AlumnoRequest licenciatura(Licenciatura licenciatura) {

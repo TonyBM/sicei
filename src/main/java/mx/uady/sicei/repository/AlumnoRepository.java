@@ -7,5 +7,5 @@ import mx.uady.sicei.model.Alumno;
 
 @Repository
 public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
-
+    public boolean existsByNombre(String nombre);
 }
