@@ -15,6 +15,7 @@ import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
 import mx.uady.sicei.service.UsuarioService;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
@@ -23,6 +24,12 @@ public class UsuarioRest {
 
     @Autowired
     private UsuarioService usuarioService;
+    
+    //POST /api/login
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody UsuarioRequest request) {
+        return ResponseEntity.ok(usuarioService.login(request.getUsuario(), request.getPassword()));
+    }
     
     // GET /api/usuarios
     @GetMapping("/usuarios")
