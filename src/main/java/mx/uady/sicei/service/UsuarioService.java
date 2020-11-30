@@ -63,6 +63,16 @@ public class UsuarioService {
             throw new NotFoundException();
     }
 
+    public String logout(String usuario) {
+        Usuario foundUser = usuarioRepository.findByUsuario(usuario);
+        if(foundUser != null) {
+            foundUser.setToken("");
+            return "Logout exitoso";
+        }
+        else
+            throw new NotFoundException();
+    }
+
     public Usuario getUsuario(Integer id) {
 
         Optional<Usuario> opt = usuarioRepository.findById(id);

@@ -30,6 +30,12 @@ public class UsuarioRest {
     public ResponseEntity<String> login(@RequestBody UsuarioRequest request) {
         return ResponseEntity.ok(usuarioService.login(request.getUsuario(), request.getPassword()));
     }
+
+    //POST /api/logout
+    @PostMapping("/logout")
+    public ResponseEntity<String> login(@RequestBody UsuarioRequest request) {
+        return ResponseEntity.ok(usuarioService.logout(request.getUsuario()));
+    }
     
     // GET /api/usuarios
     @GetMapping("/usuarios")
