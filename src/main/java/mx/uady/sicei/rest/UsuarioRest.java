@@ -33,8 +33,8 @@ public class UsuarioRest {
 
     //POST /api/logout
     @PostMapping("/logout")
-    public ResponseEntity<String> login(@RequestBody UsuarioRequest request) {
-        return ResponseEntity.ok(usuarioService.logout(request.getUsuario()));
+    public ResponseEntity<String> logout(@RequestBody UsuarioRequest request) {
+        return ResponseEntity.ok(usuarioService.logout(request.getUsuario(), request.getToken()));
     }
     
     // GET /api/usuarios
