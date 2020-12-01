@@ -21,6 +21,10 @@ public class UsuarioRequest {
     @NotEmpty
     private String password;
 
+    @Column
+    @JsonIgnore
+    private String token;
+
     public UsuarioRequest() {
 
     }
@@ -47,5 +51,19 @@ public class UsuarioRequest {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    /**
+     * @param token the token to set
+     */
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    /**
+     * @return the token
+     */
+    public String getToken() {
+        return this.token;
     }
 }
