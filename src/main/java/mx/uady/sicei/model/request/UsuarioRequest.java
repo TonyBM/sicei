@@ -21,8 +21,6 @@ public class UsuarioRequest {
     @NotEmpty
     private String password;
 
-    @Column
-    @JsonIgnore
     private String token;
 
     public UsuarioRequest() {

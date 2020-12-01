@@ -63,19 +63,22 @@ public class UsuarioService {
             usuarioRepository.save(foundUser);
             return token;
         }
-        else
+        else {
             throw new NotFoundException();
+        }
     }
 
-    public String logout(String token) {
-        Usuario foundUser = usuarioRepository.findByToken(token);
-        String userToken = foundUser.getToken();
-        if(foundUser != null && userToken == token) {
+    public Usuario logout() {
+
+        Usuario foundUser = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(foundUser != null) {
             foundUser.setToken("");
-            return "Logout exitoso";
+            usuarioRepository.save(foundUser);
+            return foundUser;
         }
-        else
+        else {
             throw new NotFoundException();
+        }
     }
 
     public Usuario getUsuario(Integer id) {

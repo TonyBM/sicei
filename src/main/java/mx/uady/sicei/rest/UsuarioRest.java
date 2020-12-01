@@ -37,8 +37,9 @@ public class UsuarioRest {
 
     //POST /api/logout
     @PostMapping("/logout")
-    public ResponseEntity<String> logout() {
-        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    public ResponseEntity<Usuario> logout() {
+
+        return ResponseEntity.ok(usuarioService.logout());
     }
     
     // GET /api/usuarios
