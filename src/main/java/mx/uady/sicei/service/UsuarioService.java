@@ -63,8 +63,8 @@ public class UsuarioService {
             throw new NotFoundException();
     }
 
-    public String logout(String usuario, String token) {
-        Usuario foundUser = usuarioRepository.findByUsuario(usuario);
+    public String logout(String token) {
+        Usuario foundUser = usuarioRepository.findByToken(token);
         String userToken = foundUser.getToken();
         if(foundUser != null && userToken == token) {
             foundUser.setToken("");

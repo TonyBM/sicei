@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
 import mx.uady.sicei.service.UsuarioService;
@@ -33,8 +37,8 @@ public class UsuarioRest {
 
     //POST /api/logout
     @PostMapping("/logout")
-    public ResponseEntity<String> logout(@RequestBody UsuarioRequest request) {
-        return ResponseEntity.ok(usuarioService.logout(request.getUsuario(), request.getToken()));
+    public ResponseEntity<String> logout() {
+        return ResponseEntity.ok(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
     
     // GET /api/usuarios
