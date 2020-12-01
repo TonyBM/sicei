@@ -6,6 +6,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +60,7 @@ public class UsuarioService {
         if(foundUser != null) {
             String token = UUID.randomUUID().toString();
             foundUser.setToken(token);
+            usuarioRepository.save(foundUser);
             return token;
         }
         else
