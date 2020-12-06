@@ -40,8 +40,8 @@ public class UsuarioService {
         usuarioCrear.setUsuario(request.getUsuario());
         usuarioCrear.setPassword(request.getPassword());
 
-        String token = UUID.randomUUID().toString();
-        usuarioCrear.setToken(token);
+        String secret = UUID.randomUUID().toString();
+        usuarioCrear.setSecret(secret);
 
         Usuario usuarioGuardado = usuarioRepository.save(usuarioCrear);
 
@@ -58,10 +58,10 @@ public class UsuarioService {
     public String login(String usuario, String password) {
         Usuario foundUser = usuarioRepository.findByUsuarioAndPassword(usuario, password);
         if(foundUser != null) {
-            String token = UUID.randomUUID().toString();
-            foundUser.setToken(token);
+            String secret = UUID.randomUUID().toString();
+            foundUser.setSecret(secret);
             usuarioRepository.save(foundUser);
-            return token;
+            return secret;
         }
         else {
             throw new NotFoundException();
@@ -72,8 +72,8 @@ public class UsuarioService {
 
         Usuario foundUser = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(foundUser != null) {
-            foundUser.setToken("");
-            usuarioRepository.save(foundUser);
+            //foundUser.setSecret("");
+            //usuarioRepository.save(foundUser);
             return foundUser;
         }
         else {

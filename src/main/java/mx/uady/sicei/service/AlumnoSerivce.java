@@ -44,8 +44,8 @@ public class AlumnoSerivce {
 
         usuario.setUsuario(request.getNombre());
         usuario.setPassword(request.getPassword());
-        String token = UUID.randomUUID().toString();
-        usuario.setToken(token);
+        String secret = UUID.randomUUID().toString();
+        usuario.setSecret(secret);
         usuario = usuarioRepository.save(usuario);
 
         alumno.setNombre(request.getNombre());

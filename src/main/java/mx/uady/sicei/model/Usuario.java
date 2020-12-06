@@ -26,7 +26,7 @@ public class Usuario {
 
     @Column
     @JsonIgnore
-    private String token;
+    private String secret;
 
     public Usuario() {
     }
@@ -77,17 +77,17 @@ public class Usuario {
     }
 
     /**
-     * @param token the token to set
+     * @param secret the secret to set
      */
-    public void setToken(String token) {
-        this.token = token;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 
     /**
-     * @return the token
+     * @return the secret
      */
-    public String getToken() {
-        return this.token;
+    public String getSecret() {
+        return this.secret;
     }
 
 }

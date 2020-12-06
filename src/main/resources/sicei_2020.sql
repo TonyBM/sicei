@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `password` varchar(45) NOT NULL,
-  `token` varchar(45) NOT NULL,
+  `secret` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `password`, `token`) VALUES
+INSERT INTO `usuarios` (`id`, `usuario`, `password`, `secret`) VALUES
 (1, 'eduardo@uady.mx', '12345', '54321'),
 (2, 'antonio@uady.mx', '67890', '09876');
 COMMIT;
