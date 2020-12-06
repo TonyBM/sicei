@@ -1,6 +1,7 @@
 package mx.uady.sicei.rest;
 
 import java.util.List;
+import javax.json.JsonObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,10 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
@@ -31,7 +28,7 @@ public class UsuarioRest {
     
     //POST /api/login
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UsuarioRequest request) {
+    public ResponseEntity<JsonObject> login(@RequestBody UsuarioRequest request) {
         return ResponseEntity.ok(usuarioService.login(request.getUsuario(), request.getPassword()));
     }
 

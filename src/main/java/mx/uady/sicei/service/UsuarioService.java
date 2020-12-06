@@ -1,15 +1,18 @@
 package mx.uady.sicei.service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.Base64;
 
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.transaction.Transactional;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,8 @@ import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
 import mx.uady.sicei.repository.AlumnoRepository;
 import mx.uady.sicei.repository.UsuarioRepository;
+
+import static org.apache.commons.codec.digest.HmacUtils.hmacSha256;
 
 @Service
 public class UsuarioService {
@@ -55,17 +60,54 @@ public class UsuarioService {
         return usuarioGuardado;
     }
     
-    public String login(String usuario, String password) {
+    public JsonObject login(String usuario, String password) {
         Usuario foundUser = usuarioRepository.findByUsuarioAndPassword(usuario, password);
         if(foundUser != null) {
             String secret = UUID.randomUUID().toString();
             foundUser.setSecret(secret);
             usuarioRepository.save(foundUser);
-            return secret;
+            
+            String jwt = buildJWT(usuario, password, secret);
+            
+            return Json.createObjectBuilder().add("JWT",jwt).build();
         }
         else {
             throw new NotFoundException();
         }
+    }
+    
+    private String buildJWT(String usuario,String password,String secret) {
+        
+        String header = Json.createObjectBuilder()
+            .add("alg", "HS256")
+            .add("typ", "JWT")
+            .build()
+            .toString();
+        
+        //get Token Expiry Time
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MONTH, 6);
+        java.util.Date expirationDate = cal.getTime();
+        
+        String payload = Json.createObjectBuilder()
+            .add("usuario", usuario)
+            .add("password", password)
+            .add("expTime", expirationDate.toString())
+            .build()
+            .toString();
+        
+        byte[] headerBytes = header.getBytes();
+        String encodedHeader = Base64.getUrlEncoder().withoutPadding().encodeToString(headerBytes);
+        
+        byte[] payloadBytes = payload.getBytes();
+        String encodedPayload = Base64.getUrlEncoder().withoutPadding().encodeToString(payloadBytes);
+        
+        byte[] signatureBytes = hmacSha256(encodedHeader + "." + encodedPayload, secret);
+        String signature = Base64.getEncoder().encodeToString(signatureBytes);        
+        
+        return encodedHeader + "." + encodedPayload + "." + signature;
     }
 
     public Usuario logout() {

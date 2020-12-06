@@ -46,7 +46,7 @@ public class TokenFilter extends GenericFilterBean {
 
         log.info("Header de auth: [{}]", authHeader);
 
-        Usuario usuario = usuarioRepository.findByToken(authHeader);
+        Usuario usuario = usuarioRepository.findBySecret(authHeader);
 
         log.info("Usuario: [{}]", usuario);
 

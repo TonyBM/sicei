@@ -1,31 +1,31 @@
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\repository\EquipoRepository.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\rest\UsuarioRest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\service\TutoriaService.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\repository\ProfesorRepository.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\service\UsuarioService.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Equipo.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Licenciatura.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Tutoriallave.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\rest\EquipoRest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\repository\AlumnoRepository.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\exception\NotFoundException.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Tutoria.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\request\EquipoRequest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\config\TokenFilter.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\SiceiApplication.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\config\WebSecurity.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\rest\AlumnoRest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\rest\ProfesorRest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\service\ProfesorService.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Usuario.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\request\UsuarioRequest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\rest\TutoriaRest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\service\AlumnoSerivce.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\service\EquipoService.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Alumno.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\request\AlumnoRequest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\request\TutoriaRequest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\Profesor.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\model\request\ProfesorRequest.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\repository\TutoriaRepository.java
-C:\wamp64\www\sicei\src\main\java\mx\uady\sicei\repository\UsuarioRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Tutoria.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\rest\ProfesorRest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\config\TokenFilter.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Profesor.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\repository\ProfesorRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\SiceiApplication.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\request\AlumnoRequest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\repository\UsuarioRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\request\TutoriaRequest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\request\UsuarioRequest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Tutoriallave.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\repository\TutoriaRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Equipo.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Usuario.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\exception\NotFoundException.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\rest\AlumnoRest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\service\AlumnoSerivce.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\rest\UsuarioRest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\service\TutoriaService.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\service\UsuarioService.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Alumno.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\service\ProfesorService.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\rest\EquipoRest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\request\ProfesorRequest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\repository\AlumnoRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\repository\EquipoRepository.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\Licenciatura.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\rest\TutoriaRest.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\service\EquipoService.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\config\WebSecurity.java
+C:\Users\Salma Rubi Wabi\Documents\GitHub\sicei\src\main\java\mx\uady\sicei\model\request\EquipoRequest.java
