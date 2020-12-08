@@ -48,7 +48,6 @@ public class AlumnoRest {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(alumno);
             
         }
-
         if(alumnoService.alumnoExiste(request)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(alumno);
         } 

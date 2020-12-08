@@ -22,6 +22,7 @@ import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
 import mx.uady.sicei.repository.AlumnoRepository;
 import mx.uady.sicei.repository.UsuarioRepository;
+import mx.uady.sicei.config.JwtTokenUtil;
 
 import static org.apache.commons.codec.digest.HmacUtils.hmacSha256;
 
@@ -33,6 +34,9 @@ public class UsuarioService {
 
     @Autowired
     private AlumnoRepository alumnoRepository;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     public List<Usuario> getUsuarios() {
         return usuarioRepository.findAll();
@@ -66,9 +70,8 @@ public class UsuarioService {
             String secret = UUID.randomUUID().toString();
             foundUser.setSecret(secret);
             usuarioRepository.save(foundUser);
-            
-            String jwt = buildJWT(usuario, password, secret);
-            
+
+            String jwt = jwtTokenUtil.generateToken(foundUser);
             return Json.createObjectBuilder().add("JWT",jwt).build();
         }
         else {

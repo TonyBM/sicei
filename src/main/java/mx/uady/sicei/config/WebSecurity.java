@@ -15,6 +15,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     private TokenFilter tokenFilter;
 
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -26,7 +29,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/login", "/api/register").permitAll()
                 .anyRequest().authenticated()
             .and()
-                .addFilterBefore(tokenFilter, BasicAuthenticationFilter.class);
+                .addFilterBefore(jwtRequestFilter, BasicAuthenticationFilter.class);
        
     }
 
