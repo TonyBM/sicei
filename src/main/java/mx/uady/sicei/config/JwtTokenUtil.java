@@ -15,6 +15,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.time.ZonedDateTime;
 import mx.uady.sicei.model.Usuario;
+import io.jsonwebtoken.JwtException;
 
 @Component
 public class JwtTokenUtil implements Serializable {
@@ -22,9 +23,6 @@ public class JwtTokenUtil implements Serializable {
 	private static final long serialVersionUID = -2550185165626007488L;
 
 	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 1000;
-
-	//@Value("${jwt.secret}")
-	//private String secret;
 
 	//retrieve username from jwt token
 	public String getUsernameFromToken(String token) {
@@ -42,19 +40,14 @@ public class JwtTokenUtil implements Serializable {
 	}
     //for retrieveing any information from token we will need the secret key
 	private Claims getAllClaimsFromToken(String token) {
-		//String secret = algo;
 		return Jwts.parser().parseClaimsJwt(token).getBody();
 	}
 
 	//check if the token has expired
 	private Boolean isTokenExpired(DecodedToken token) {
 		try {
-			System.out.println("aaaaaaaaaaaaa");
-			System.out.println(token.ext);
 			SimpleDateFormat sdf = new SimpleDateFormat("SSS");
 			Date date = new Date(Long.parseLong(token.ext));
-			//Date date = sdf.parse(token.ext);
-			System.out.println(date.toString());
 			return date.before(new Date());
 		}
 		catch(Exception e){			
@@ -83,8 +76,13 @@ public class JwtTokenUtil implements Serializable {
 	} 
 
 	//validate token
-	public Boolean validateToken(DecodedToken token, Usuario usuario) {
+	public Boolean validateToken(DecodedToken token, Usuario usuario, String jwt) {
 		final String username = usuario.getUsuario();
+		try{
+			Jwts.parser().setSigningKey(usuario.getSecret()).parseClaimsJws(jwt).getBody();
+		}catch(JwtException ex){
+			return false;
+		}
 		return (username.equals(usuario.getUsuario()) && !isTokenExpired(token));
 	}
 }

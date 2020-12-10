@@ -12,14 +12,14 @@ public class DecodedToken {
   public String exp;
   public String iat;
   public String ext;
+  public String secret;
 
 
   public static DecodedToken getDecoded(String encodedToken) throws UnsupportedEncodingException {
       String[] pieces = encodedToken.split("\\.");
       String b64payload = pieces[1];
       String jsonString = new String(Base64.decodeBase64(b64payload), "UTF-8");
-      System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbb");
-      System.out.println(jsonString);
+      String secret = new String(Base64.decodeBase64(pieces[2]), "UTF-8");
       return new Gson().fromJson(jsonString, DecodedToken.class);
   }
 
