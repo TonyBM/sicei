@@ -22,6 +22,7 @@ mx\uady\sicei\config\JwtRequestFilter.class
 mx\uady\sicei\model\request\UsuarioRequest.class
 mx\uady\sicei\model\Usuario.class
 mx\uady\sicei\rest\EquipoRest.class
+mx\uady\sicei\config\Email.class
 mx\uady\sicei\model\Tutoriallave.class
 mx\uady\sicei\service\AlumnoSerivce.class
 mx\uady\sicei\service\TutoriaService.class
