@@ -11,7 +11,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TestEmail {
     private Properties props = new Properties();
 
@@ -25,6 +28,7 @@ public class TestEmail {
         return this;
     }
 
+    @Async
     public void send(final String from, final String password, String to, String sub, String msg) {
         // get Session
         Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
