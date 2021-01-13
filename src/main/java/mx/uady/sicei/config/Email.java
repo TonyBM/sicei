@@ -11,7 +11,12 @@ import com.google.api.client.util.Base64;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Email {
+
+    @Autowired
+    private Gmail gmailInstance;
 
     public static MimeMessage createEmail(String to, String from, String subject, String bodyText)
             throws MessagingException {
@@ -36,10 +41,9 @@ public class Email {
         return message;
     }
 
-    public static Message sendMessage(Gmail service, String userId, MimeMessage emailContent)
-            throws MessagingException, IOException {
+    public Message sendMessage(String userId, MimeMessage emailContent) throws MessagingException, IOException {
         Message message = createMessageWithEmail(emailContent);
-        message = service.users().messages().send(userId, message).execute();
+        message = gmailInstance.users().messages().send(userId, message).execute();
 
         System.out.println("Message id: " + message.getId());
         System.out.println(message.toPrettyString());

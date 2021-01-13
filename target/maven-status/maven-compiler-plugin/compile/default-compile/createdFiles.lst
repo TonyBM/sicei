@@ -2,6 +2,7 @@ mx\uady\sicei\rest\AlumnoRest.class
 mx\uady\sicei\model\Profesor.class
 mx\uady\sicei\repository\AlumnoRepository.class
 mx\uady\sicei\model\request\EquipoRequest.class
+mx\uady\sicei\config\EmailConfig.class
 mx\uady\sicei\config\DecodedToken.class
 mx\uady\sicei\SiceiApplication.class
 mx\uady\sicei\rest\ProfesorRest.class
