@@ -40,15 +40,15 @@ public class CorreoService {
     @Async
     public void enviarCorreoDeRegistro(Usuario usuario) {
         try {
-            email.send(EMAIL_SERVICIO, id_correo, EMAIL_SERVICIO, SUBJECT, usuario.getUsuario());
+            email.send(EMAIL_SERVICIO, id_correo, usuario.getEmail(), SUBJECT, generarMensajeUsuarioCreado(usuario.getUsuario()));
             
         } catch (Exception e) {
-            System.out.println("aaaaaaaaaaaaaaaaaa");
+            System.out.println("error enviando mail");
         }
     }
 
     private String generarMensajeUsuarioCreado(String nombre) {
-        return String.format("BIENVENDIO AL SICEN USUARIO %s", nombre);
+        return String.format("BIENVENDIO AL SICEI USUARIO %s", nombre);
     }
     
 }
