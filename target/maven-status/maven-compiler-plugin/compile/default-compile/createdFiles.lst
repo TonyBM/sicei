@@ -1,5 +1,7 @@
 mx\uady\sicei\rest\AlumnoRest.class
+mx\uady\sicei\config\TestEmail$1.class
 mx\uady\sicei\model\Profesor.class
+mx\uady\sicei\config\TestEmail.class
 mx\uady\sicei\repository\AlumnoRepository.class
 mx\uady\sicei\model\request\EquipoRequest.class
 mx\uady\sicei\config\EmailConfig.class
