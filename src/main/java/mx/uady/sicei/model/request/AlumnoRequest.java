@@ -1,6 +1,7 @@
 package mx.uady.sicei.model.request;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import mx.uady.sicei.model.Licenciatura;
@@ -14,7 +15,10 @@ public class AlumnoRequest {
     @NotEmpty
     @Size(min = 8, max = 255)
     private String password;
-
+    
+    @NotNull
+    @Size(min = 5, max = 50)
+    @NotEmpty
     private String email;
 
     private Licenciatura licenciatura;
