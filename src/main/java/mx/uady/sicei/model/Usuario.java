@@ -24,6 +24,9 @@ public class Usuario {
     @JsonIgnore
     private String password;
 
+    @Column(name = "email")
+    private String email;
+
     @Column
     @JsonIgnore
     private String secret;
@@ -60,6 +63,14 @@ public class Usuario {
     public Usuario usuario(String usuario) {
         this.usuario = usuario;
         return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 
     /**

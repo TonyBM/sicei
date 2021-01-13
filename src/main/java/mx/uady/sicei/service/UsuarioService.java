@@ -22,6 +22,7 @@ import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
 import mx.uady.sicei.repository.AlumnoRepository;
 import mx.uady.sicei.repository.UsuarioRepository;
+import mx.uady.sicei.service.CorreoService;
 import mx.uady.sicei.config.JwtTokenUtil;
 
 import static org.apache.commons.codec.digest.HmacUtils.hmacSha256;
@@ -38,6 +39,9 @@ public class UsuarioService {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    private CorreoService correoService;
+
     public List<Usuario> getUsuarios() {
         return usuarioRepository.findAll();
     }
@@ -48,7 +52,7 @@ public class UsuarioService {
 
         usuarioCrear.setUsuario(request.getUsuario());
         usuarioCrear.setPassword(request.getPassword());
-
+        usuarioCrear.setEmail(request.getEmail());
         String secret = UUID.randomUUID().toString();
         usuarioCrear.setSecret(secret);
 
@@ -60,6 +64,8 @@ public class UsuarioService {
         alumno.setUsuario(usuarioGuardado); // Relacionar 2 entidades
 
         alumnoRepository.save(alumno);
+
+        correoService.enviarCorreoDeRegistro(usuarioCrear);
 
         return usuarioGuardado;
     }

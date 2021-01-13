@@ -21,6 +21,12 @@ public class UsuarioRequest {
     @NotEmpty
     private String password;
 
+    
+    @NotNull
+    @Size(min = 5, max = 50)
+    @NotEmpty
+    private String email;
+
     private String secret;
 
     public UsuarioRequest() {
@@ -33,6 +39,14 @@ public class UsuarioRequest {
 
     public String getPassword() {
         return password;
+    }
+    
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setUsuario(String usuario) {
