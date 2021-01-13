@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.model.request.UsuarioRequest;
+import mx.uady.sicei.service.CorreoService;
 import mx.uady.sicei.service.UsuarioService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,9 @@ public class UsuarioRest {
 
     @Autowired
     private UsuarioService usuarioService;
+    
+    @Autowired
+    private CorreoService correoService;
     
     //POST /api/login
     @PostMapping("/login")
@@ -57,7 +61,7 @@ public class UsuarioRest {
     @PutMapping("/usuario/{id}")
     public ResponseEntity<Usuario> registrarUsuario(@PathVariable Integer id, @RequestBody UsuarioRequest request) {
         Usuario usuario = usuarioService.editarUsuario(id, request);
-
+        correoService.enviarCorreoDeRegistro(usuario);
         return ResponseEntity
             .ok()
             .body(usuario);
