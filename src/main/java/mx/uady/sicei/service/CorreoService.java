@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.google.api.services.gmail.Gmail;
+////import com.google.api.services.gmail.Gmail;
 
 import javax.transaction.Transactional;
 import mx.uady.sicei.exception.NotFoundException;
@@ -20,25 +20,27 @@ import mx.uady.sicei.repository.TutoriaRepository;
 import mx.uady.sicei.repository.UsuarioRepository;
 import org.springframework.scheduling.annotation.Async;
 import javax.mail.internet.MimeMessage;
-import mx.uady.sicei.config.Email;
+import mx.uady.sicei.config.TestEmail;
 
 @Service
 public class CorreoService {
 
     @Autowired
-    private Email email;
+    private TestEmail email;
 
     private final String EMAIL_SERVICIO = "javquijano@gmail.com";
 
     private final String SUBJECT = "BIENVENIDO AL SICEI";
 
-    private final String id_correo = "AIzaSyByCnqmTtdjDPP0E6JaVZUygVdZcHkqTF0";
+    private final String id_correo = "dvhuwmlfoktvmmzm";
 
     @Async
     public void enviarCorreoDeRegistro(Usuario usuario) {
         try {
+            /*
             MimeMessage mensaje  = email.createEmail(usuario.getEmail(), EMAIL_SERVICIO, SUBJECT, generarMensajeUsuarioCreado(usuario.getUsuario()));
-            email.sendMessage(id_correo, mensaje);
+            email.sendMessage(id_correo, mensaje);*/
+            email.send(EMAIL_SERVICIO, id_correo, EMAIL_SERVICIO, SUBJECT, usuario.getUsuario());
             
         } catch (Exception e) {
             System.out.println("aaaaaaaaaaaaaaaaaa");

@@ -16,6 +16,7 @@ import mx.uady.sicei.model.Tutoria;
 import mx.uady.sicei.model.Usuario;
 import mx.uady.sicei.repository.AlumnoRepository;
 import mx.uady.sicei.repository.TutoriaRepository;
+import mx.uady.sicei.service.CorreoService;
 import mx.uady.sicei.repository.UsuarioRepository;
 
 @Service
@@ -27,6 +28,10 @@ public class AlumnoSerivce {
     private TutoriaRepository tutoriaRepository;
     @Autowired 
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private CorreoService correoService;
+
 
     public List<Alumno> getAlumnos() {
 
@@ -44,9 +49,11 @@ public class AlumnoSerivce {
 
         usuario.setUsuario(request.getNombre());
         usuario.setPassword(request.getPassword());
+        usuario.setEmail(request.getEmail());
         String secret = UUID.randomUUID().toString();
         usuario.setSecret(secret);
         usuario = usuarioRepository.save(usuario);
+        correoService.enviarCorreoDeRegistro(usuario);
 
         alumno.setNombre(request.getNombre());
         alumno.setLicenciatura(request.getLicenciatura());

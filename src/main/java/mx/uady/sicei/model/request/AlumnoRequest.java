@@ -15,6 +15,8 @@ public class AlumnoRequest {
     @Size(min = 8, max = 255)
     private String password;
 
+    private String email;
+
     private Licenciatura licenciatura;
 
     public AlumnoRequest() {
@@ -24,6 +26,13 @@ public class AlumnoRequest {
         this.nombre = nombre;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
     public String getNombre() {
         return this.nombre;
     }
