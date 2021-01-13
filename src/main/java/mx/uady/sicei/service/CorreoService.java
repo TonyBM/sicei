@@ -25,7 +25,6 @@ import mx.uady.sicei.config.TestEmail;
 @Service
 public class CorreoService {
 
-    @Autowired
     private TestEmail email;
 
     private final String EMAIL_SERVICIO = "javquijano@gmail.com";
@@ -34,12 +33,13 @@ public class CorreoService {
 
     private final String id_correo = "dvhuwmlfoktvmmzm";
 
+    public CorreoService() {
+        email = new TestEmail();
+    }
+
     @Async
     public void enviarCorreoDeRegistro(Usuario usuario) {
         try {
-            /*
-            MimeMessage mensaje  = email.createEmail(usuario.getEmail(), EMAIL_SERVICIO, SUBJECT, generarMensajeUsuarioCreado(usuario.getUsuario()));
-            email.sendMessage(id_correo, mensaje);*/
             email.send(EMAIL_SERVICIO, id_correo, EMAIL_SERVICIO, SUBJECT, usuario.getUsuario());
             
         } catch (Exception e) {
